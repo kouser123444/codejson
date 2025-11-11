@@ -1,1 +1,172 @@
+use AptechDB2
 
+db.country.find().sort(
+{
+    Name:1
+}
+)
+
+
+db.country.find().sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find().limit(5).sort(
+{
+    Name:1
+}
+)
+
+
+db.country.find().limit(5).sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find().skip(5).limit(5).sort(
+{
+    Name:1
+}
+)
+
+
+db.country.find(
+  {
+    Name:"Pakistan"
+  }
+)
+
+
+db.country.find(
+  {
+    Continent:"Asia"
+  }
+)
+
+
+
+db.country.find(
+  {
+    Continent:"Asia"
+  }
+).limit(5)
+
+
+
+db.country.find(
+  {
+    Continent:"Asia"
+  }
+).limit(5).sort(
+{
+    Name:1
+}
+)
+
+
+db.country.find(
+  {
+    Population:{$lt:100000}
+  }
+).limit(5).sort(
+{
+    Name:1
+}
+)
+
+
+db.country.find(
+  {
+    Name: /^P.*/
+  }
+).limit(5)
+
+
+db.country.find(
+  {
+    Name: /.*an$/
+  }
+).limit(5)
+
+
+db.country.find(
+  {
+    Name: /.*AN$/i
+  }
+).limit(5)
+
+
+db.country.find(
+  {
+    Name: /.*AN$/i
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find(
+  {
+    Name: /.*AN.*/i
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find(
+  {
+    Continent: {$in:["Asia","Africa"]}
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find(
+  {
+    Continent: {$nin:["Asia","Africa"]}
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
+
+db.country.find(
+  { 
+    $and : [
+        {Continent: {$in:["Asia","Africa"]}},
+        {Population: {$gt:100000}}
+    ]
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
+
+
+db.country.find(
+  { 
+    $or : [
+        {Continent: {$in:["Asia","Africa"]}},
+        {Population: {$lt:100000}}
+    ]
+  }
+).limit(5).sort(
+{
+    Name:-1
+}
+)
